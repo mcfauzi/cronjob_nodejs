@@ -2,14 +2,16 @@ import db from './libs/db';
 import mailer from './libs/mailer';
 
 const processData = async () => {
-    // console.log(mailer);
-
     db.connect(function (err) {
         if (err) console.log(err);
-        console.log('Connected!');
+        console.log('DB Connected!');
         var sql = "SELECT `id`, `email`, `subject`, `message` " +
-            " FROM `queue_email` WHERE `status` = 0 AND `email` = 'sanzcruzer@gmail.com' " +
-            " ORDER BY `id` ASC LIMIT 1 ";
+            " FROM `queue_email` WHERE `status` = 0 " +
+            // " AND `email` = 'sanzcruzer@gmail.com' " +
+            " ORDER BY `id` ASC " +
+            // " LIMIT 2";
+            " LIMIT 5";
+
         db.query(sql, function (err, result, fields) {
             if (err) console.log(err);
             result.forEach(function (row) {
@@ -24,16 +26,16 @@ const processData = async () => {
                     if (error) {
                         console.log(error);
                     } else {
-                        console.log('Email sent!');
+                        console.log('Email sent to ' + row.email + ' !');
                         var updSQL = "UPDATE `queue_email` SET status = 1 WHERE id = '" + row.id + "'";
                         db.query(updSQL, function (err, result) {
                             if (err) console.log(err);
-                            console.log(result.affectedRows + " record(s) updated");
+                            console.log(result.affectedRows + " with id " + row.id + " record(s) updated");
                         });
                     }
                 });
             });
-            console.log('Done');
+            console.log('Process successfull!');
         });
     });
 }
