@@ -1,3 +1,3 @@
-# NodeJS CronJob Nodemailer MySQL
+# Cron job with Nodemailer & MySQL
 
 A sample node work-dev projects
