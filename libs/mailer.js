@@ -1,6 +1,5 @@
 import nodemailer from 'nodemailer';
 
-// export default function sendMail() {
 const mailer = nodemailer.createTransport({
     host: "mail.gotravelly.com",
     port: 587,
