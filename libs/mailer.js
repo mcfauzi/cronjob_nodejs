@@ -7,8 +7,6 @@ const mailer = nodemailer.createTransport({
     auth: {
         user: "official@gotravelly.com",
         pass: "Official123@GoTravelly"
-        // user: "fauzi@gotravelly.com",
-        // pass: "GoTravelly_Fauzi2017"
     },
     tls: {
         rejectUnauthorized: false

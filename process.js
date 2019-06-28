@@ -16,7 +16,7 @@ const processData = async () => {
             if (err) console.log(err);
             result.forEach(function (row) {
                 var mailOpt = {
-                    from: "fauzi@gotravelly.com",
+                    from: "official@gotravelly.com",
                     to: row.email,
                     subject: row.subject,
                     html: row.message
