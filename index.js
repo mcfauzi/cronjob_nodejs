@@ -1,7 +1,11 @@
-import cron from "node-cron";
-import processData from "./process";
+// import cron from "node-cron";
+// import processData from "./process";
+const cron = require("node-cron");
+const {
+    processData
+} = require("./process");
 
-var crontab = "*/15 * * * *";
+var crontab = "* * * * *";
 
 cron.schedule(crontab, () => {
     //cron job every midnight day at 00:01

@@ -1,4 +1,5 @@
-import nodemailer from 'nodemailer';
+// import nodemailer from 'nodemailer';
+const nodemailer = require('nodemailer');
 
 const mailer = nodemailer.createTransport({
     host: "mail.gotravelly.com",
@@ -13,4 +14,7 @@ const mailer = nodemailer.createTransport({
     }
 });
 
-export default mailer;
+// export default mailer;
+module.exports = {
+    mailer: mailer,
+}
