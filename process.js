@@ -11,16 +11,14 @@ const {
 var processData = function () {
 	var sql = "SELECT `id`, `email`, `subject`, `message` " +
 		" FROM `queue_email` WHERE `status` = 0 " +
-		// " AND `email` = 'sanzcruzer@gmail.com' " +
 		" ORDER BY `id` ASC " +
-		// " LIMIT 2";
 		" LIMIT 5";
 
 	db.query(sql, function (err, result, fields) {
 		if (err) console.log(err);
 		result.forEach(function (row) {
 			var mailOpt = {
-				from: "GoTravelly <official@gotravelly.com>",
+				from: "MAIL_FROM",
 				to: row.email,
 				subject: row.subject,
 				html: row.message
